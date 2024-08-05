@@ -3,8 +3,6 @@
 @@ -0,0 +0,0 @@
  package com.skf.labs.sqlilike;
  
-@@ -3,0 +3,1 @@
-+import org.springframework.jdbc.core.RowMapper;
  import java.util.List;
  import org.springframework.beans.factory.annotation.Autowired;
  import org.springframework.stereotype.Component;
@@ -18,13 +16,15 @@
      private JdbcTemplate jdbcTemplate;
  
      public List<User> getUser(String username) {
-@@ -16,3 +17,2 @@
+@@ -16,2 +16,2 @@
 -        String sql = "SELECT UserName, email FROM users WHERE UserName LIKE '%" + username + "%' ORDER BY UserId";
 -        List<User> users = jdbcTemplate.query(sql, (resultSet, rowNum) -> new User(rowNum,
--                resultSet.getString("UserName"), resultSet.getString("email"), sql));
-+    String sql = "SELECT UserName, email FROM users WHERE UserName LIKE ? ORDER BY UserId";
-+    List<User> users = jdbcTemplate.query(sql, new Object[]{"%" + username + "%"}, (resultSet, rowNum) -> new User(rowNum, resultSet.getString("UserName"), resultSet.getString("email"), sql));
++        String sql = "SELECT UserName, email FROM users WHERE UserName LIKE ? ORDER BY UserId";
++        List<User> users = jdbcTemplate.query(sql, new Object[]{"%" + username + "%"}, (resultSet, rowNum) -> new User(rowNum,
+                 resultSet.getString("UserName"), resultSet.getString("email"), sql));
          return users;
      }
+@@ -21,0 +21,1 @@
++    }
  
  }
