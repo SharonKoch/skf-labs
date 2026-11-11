@@ -3,6 +3,6 @@ flask-graphql
 flask-migrate 
 flask-sqlalchemy 
 graphene==2.1.8
-graphql-core==2.2.1 
+graphql-core==3.2.12 
 graphene-sqlalchemy
 flask_httpauth
